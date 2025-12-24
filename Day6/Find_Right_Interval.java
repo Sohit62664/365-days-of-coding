@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Find_Right_Interval {
     class Solution {
         public int[] findRightInterval(int[][] intervals) {
+            //optimal approach
             // ArrayList<Integer> index = new ArrayList<>();
             int[] ans = new int[intervals.length];
 
@@ -38,5 +39,25 @@ public class Find_Right_Interval {
             }
             return ans;
         }
+
+
+
+        // brute force
+        int n= intervals.length;
+        int[] ans =new int [n];
+        for(int i =0 ; i< n ; i++){
+
+            int idx =-1;
+            int minstart= Integer.MAX_VALUE;
+
+            for(int j =0  ; j < n ;j++){
+                if(intervals[i][1]<=intervals[j][0] && minstart>intervals[j][0]){
+                    minstart=intervals[j][0];
+                    idx=j;
+                }
+            }
+            ans[i]=idx;
+        }
+        return ans;
     }
 }
