@@ -11,6 +11,7 @@ public class bubble_sort {
             for (int i = 0; i < n; i++) {
                 //
                 swaped = false;
+                // for each step max element come at the last 
                 for (int j = 1; j < n - i; j++) {
 
                     // check for swaped
