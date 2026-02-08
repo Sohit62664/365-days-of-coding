@@ -2,7 +2,7 @@ package Day24;
 
 import java.util.*;
 
-public class Main {
+public class Helpful_math {
     public static void main(String [] args){
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
