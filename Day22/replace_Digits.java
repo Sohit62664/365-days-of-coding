@@ -1,4 +1,4 @@
-package extra;
+package Day22;
 
 public class replace_Digits {
     class Solution {
