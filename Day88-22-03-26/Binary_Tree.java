@@ -68,3 +68,50 @@ public class Binary_Tree {
         tree.display();
     }
 }
+
+
+
+// Output 
+// Enter the Root Node : 
+// 15
+// Enter true for left of 15 otherwice false :
+// true
+// Enter the left Node of 15
+// 6
+// Enter true for left of 6 otherwice false :
+// true
+// Enter the left Node of 6
+// 8
+// Enter true for left of 8 otherwice false :
+// false
+// Enter true for right of 8 otherwice false :
+// true
+// Enter the right Node of 8
+// 10
+// Enter true for left of 10 otherwice false :
+// false
+// Enter true for right of 10 otherwice false :
+// false
+// Enter true for right of 6 otherwice false :
+// true
+// Enter the right Node of 6
+// 14
+// Enter true for left of 14 otherwice false :
+// false
+// Enter true for right of 14 otherwice false :
+// false
+// Enter true for right of 15 otherwice false :
+// true
+// Enter the right Node of 15
+// 9
+// Enter true for left of 9 otherwice false :
+// false
+// Enter true for right of 9 otherwice false :
+// false
+// 15
+// 	6
+// 		8
+// 			10
+// 		14
+// 	9
+
