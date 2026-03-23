@@ -50,7 +50,26 @@ public class Binary_Tree {
     }
     public void display(){
         display(root , "");
+        System.out.println();
+        preetyDisplay(root , 0);
     }
+    
+    private void preetyDisplay(Node node , int level){
+        if(node == null) return ;
+
+        preetyDisplay(node.right, level +1);
+        if(level!=0){
+            for(int i = 0 ; i< level-1 ; i++){
+                System.out.print("|\t\t");
+            }
+            System.out.println("|------->"+node.value);
+
+        }else{
+            System.out.println(node.value);
+        }
+        preetyDisplay(node.left , level+1);
+    }
+
     
     private void display(Node node, String indent){
         if(node==null){
@@ -114,4 +133,17 @@ public class Binary_Tree {
 // 			10
 // 		14
 // 	9
+//
+//
+//
+//
+// |------->9
+// 15
+// |		|------->14
+// |------->6
+// |		|		|------->10
+// |		|------->8
+
+
+
 
