@@ -23,3 +23,28 @@ class Main {
     }
     
 }
+
+
+// GFG Question passes 1010  test cases
+
+class Solution {
+    public void bubbleSort(int[] arr) {
+        // code here
+        bub_sort(arr, 0 , arr.length-1);
+        return;
+    }
+    
+    void bub_sort(int [] arr , int st , int end){
+        if(end== 0 ) return ;
+        if(st<end){
+            if(arr[st]>arr[st+1]){
+                int temp = arr[st];
+                arr[st]= arr[st+1];
+                arr[st+1]= temp;
+            }
+            bub_sort(arr, st+1 , end);
+        }else{
+            bub_sort(arr , 0 , end-1);
+        }
+    }
+}
