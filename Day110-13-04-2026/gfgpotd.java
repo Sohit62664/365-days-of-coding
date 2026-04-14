@@ -3,6 +3,62 @@ class Solution {
         int n = num.length;
         int[] ans = num.clone();
 
+       
+        for (int i = 0; i < n / 2; i++) {
+            ans[n - 1 - i] = ans[i];
+        }
+
+       
+        boolean isGreater = false;
+        for (int i = 0; i < n; i++) {
+            if (ans[i] > num[i]) {
+                isGreater = true;
+                break;
+            } else if (ans[i] < num[i]) {
+                break;
+            }
+        }
+        if (isGreater) return ans;
+
+      
+        int mid = (n - 1) / 2;
+        int carry = 1;
+
+        while (mid >= 0 && carry > 0) {
+            int sum = ans[mid] + carry;
+            ans[mid] = sum % 10;
+            carry = sum / 10;
+            mid--;
+        }
+
+        
+        for (int i = 0; i < n / 2; i++) {
+            ans[n - 1 - i] = ans[i];
+        }
+
+        
+        if (carry > 0) {
+            int[] res = new int[n + 1];
+            res[0] = 1;
+            res[n] = 1;
+            return res;
+        }
+
+        return ans;
+    }
+}
+
+
+
+
+// Method 02
+
+
+class Solution {
+    static int[] nextPalindrome(int[] num) {
+        int n = num.length;
+        int[] ans = num.clone();
+
         // STEP 1: Mirror left → right
         for (int i = 0; i < n / 2; i++) {
             ans[n - 1 - i] = ans[i];
@@ -60,6 +116,10 @@ class Solution {
 }
 
 
+
+
+
+//Incorrect codes 
 
 
 // class Solution {
@@ -138,4 +198,87 @@ class Solution {
 //         }
 //     }
 
+// }
+
+
+
+
+
+// class Solution {
+//     static int[] nextPalindrome(int[] num) {
+//         int n = num.length;
+//         int[] ans = num.clone();
+
+//         // STEP 1: Mirror left → right
+
+//         for (int i = 0; i < n / 2; i++) {
+//             ans[n - 1 - i] = ans[i];
+//         }
+
+//         boolean greter = false;//
+//         boolean even = false;
+//         boolean isGreater = false;
+// for (int i = 0; i < n; i++) {
+//     if (ans[i] > num[i]) {
+//         greter = true;
+//         break;
+//     } else if (ans[i] < num[i]) {
+//         greter = false;
+//         break;
+//     }
+// }
+// if (greter) return ans;
+//         int carry = 1;
+
+//         if (!greter) {
+//             // even
+//             if (even) {
+//                 int mid = n / 2 - 1;
+//                 while (ans[mid] == 9 && mid > 0) {
+//                     ans[mid] = 0;
+//                     mid--;
+//                 }
+//                 if (ans[mid] != 9) {
+//                     carry = 0;
+//                     ans[mid]++;
+//                     for (int i = 0; i < n / 2; i++) {
+//                         ans[n - 1 - i] = ans[i];
+//                     }
+//                     return ans;
+//                 }
+                
+//                 // copy
+//             }
+
+//             // odd
+
+//             if (!even) {
+//                 int mid = n / 2 ;
+//                 while (ans[mid] == 9 && mid > 0) {
+//                     ans[mid] = 0;
+//                     mid--;
+//                 }
+//                 if (ans[mid] != 9) {
+//                     carry = 0;
+//                     ans[mid]++;
+//                     for (int i = 0; i < n / 2; i++) {
+//                         ans[n - 1 - i] = ans[i];
+//                     }
+//                     return ans;
+//                 }
+                
+//             }
+            
+//         }
+        
+//         if (carry > 0) {
+//             int[] res = new int[n + 1];
+//             res[0] = 1;
+//             res[n] = 1;
+//             return res;
+//         }
+
+//         return ans;
+
+//     }
 // }
