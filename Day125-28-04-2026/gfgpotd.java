@@ -1,3 +1,10 @@
+// logic of the code 
+// 1. Find longest consecutive block (lc)
+// 2. Expand left/right using k changes
+// but it will Fails if theire is theire is multiple character having the highest frequecy 
+
+
+
 class Solution {
 
     public int longestSubstr(String s, int k) {
