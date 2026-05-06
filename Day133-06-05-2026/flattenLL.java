@@ -55,3 +55,28 @@ class Solution {
 
     }
 }
+
+
+//Using Recursion 
+class Solution {
+    public void flatten(TreeNode root) {
+        TreeNode current = root;
+        change(root);
+    }
+
+    void change(TreeNode current){
+        if(current == null) return ;
+        if(current.left != null){
+            TreeNode temp = current.left;
+            while(temp.right != null ){
+                temp = temp.right;
+            }
+            temp.right = current.right;
+            current.right= current.left;
+            current.left = null ;
+
+        }
+        change(current.right);
+    } 
+}
+
