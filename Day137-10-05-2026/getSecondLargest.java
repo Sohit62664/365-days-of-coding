@@ -1,3 +1,4 @@
+// in Single pass 
 class Solution {
     public int getSecondLargest(int[] arr) {
         // code here
@@ -24,3 +25,36 @@ class Solution {
         }
     }
 }
+
+// in two pass approach 
+
+class Solution {
+    public int getSecondLargest(int[] arr) {
+        // code here
+        // m1  sort and get 
+        int max = Integer.MIN_VALUE;
+        int second = Integer.MIN_VALUE;
+        for(int m : arr){
+            max= Math.max(m , max);
+        }
+
+        for(int m:arr){
+            if(m!= max){
+                second = Math.max(second , m);
+            }
+        }
+
+        if(second == Integer.MIN_VALUE){
+            return -1;
+        }
+        else {
+            return second;
+        }
+        
+    }
+}
+
+
+// Anorther Method is 
+// sort the array and get n-1 element
+
