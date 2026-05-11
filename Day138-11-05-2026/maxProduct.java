@@ -1,3 +1,15 @@
+Approach 1 
+	// using three loop compute max product of three 
+
+Approach 2 : sort the array in reverse (decending order)
+	// findproduct of first 3 , 
+	// find product of last two and fist 
+	// return max of them 
+	
+
+
+
+Approach 3 Most optimized 
 // Find the 3 largest numbers.
 // Find the 2 smallest (most negative) numbers.
 // Compute product of 3 largest numbers.
