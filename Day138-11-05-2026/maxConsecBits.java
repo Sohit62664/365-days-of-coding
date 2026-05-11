@@ -1,6 +1,4 @@
 
-
-
 class Solution {
     public int maxConsecBits(int[] arr) {
         // code here
@@ -31,3 +29,32 @@ class Solution {
         return Math.max(max_z,max_1);
     }
 }
+
+
+
+
+// ap2
+
+class Solution {
+	public int maxConsecBits(int[] arr) {
+		// code here
+		
+		int max = 0 ;
+		int count = 1 ;
+		for (int i = 1 ; i<arr.length ; i++) {
+			if (arr[i] != arr[i - 1]) {
+				max = Math.max(max, count);
+				count = 1 ;
+			} else {
+				count++;
+				
+			}
+		}
+		// update the last count very-very Important
+		
+		max = Math.max(max, count);
+		
+		return max ;
+	}
+}
+
