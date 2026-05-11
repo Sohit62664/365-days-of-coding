@@ -1,4 +1,4 @@
-For left rotation by d, reversal algorithm is: 
+For left rotation by d, reversal algorithm is: gfg rotate by d
 1. Reverse first d elements 
 2. Reverse remaining n-d elements 
 3. Reverse whole array
@@ -7,7 +7,7 @@ reverse(d, n - 1);
 reverse(0, n - 1);
 
 
-For right rotation by d, reversal algorithm is:
+For right rotation by d, reversal algorithm is: leetcode lotate by k
 
 1.Reverse whole array
 2.Reverse first d elements
