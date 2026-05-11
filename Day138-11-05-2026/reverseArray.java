@@ -1,3 +1,7 @@
+// logic :
+// iterate over array by k increment 
+
+
 class Solution {
 	public void reverseArray(int arr[]) {
 		// code here
