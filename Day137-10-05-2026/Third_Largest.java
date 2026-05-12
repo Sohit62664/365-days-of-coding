@@ -40,6 +40,32 @@ class Solution {
 }
 
 
+// optimized above approach :
+
+
+class Solution {
+    int thirdLargest(int arr[]) {
+        // code here
+        int first = -1;
+        int second = -1;
+        int third = -1;
+        
+        for(int num: arr){
+            if(num>=first){
+                third = second;
+                second = first ;
+                first = num ;
+            }else if(num>=second && num>third){
+                third = second ;
+                second = num;
+            }else if(num > third){
+                third = num ;
+            }
+        }
+        return third;
+    }
+}
+
 
 
 // in three passes when duplicate are allowed 
