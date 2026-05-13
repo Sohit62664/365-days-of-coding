@@ -1,3 +1,40 @@
+// By the Boyer-Moore Voting Algorithm
+
+
+class Solution {
+    int majorityElement(int arr[]) {
+        // code here
+        int candidate = -1 ;
+        int count = 0 ;
+        for(int i= 0 ; i< arr.length ; i++){
+            if(count== 0 ){
+                candidate = arr[i];
+                count = 1 ;
+            }else if(candidate == arr[i]){
+                count++;
+            }else{
+                count--;
+            }
+        }
+        
+        // verification
+        int c = 0;
+        for(int num : arr){
+            if(num == candidate){
+                c++;
+            }
+        }
+        int n= arr.length;
+        
+        return c>(n/2) ? candidate : -1 ; 
+    }
+}
+
+
+
+
+
+
 // By HashMap 
 class Solution {
 	int majorityElement(int arr[]) {
