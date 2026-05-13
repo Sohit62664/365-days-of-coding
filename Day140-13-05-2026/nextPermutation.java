@@ -1,3 +1,9 @@
+Approach
+	Find the first decreasing element from right (pivot).
+    Find the next greater element from right and swap with pivot.
+	Reverse the array after pivot index.
+
+
 class Solution {
 	void nextPermutation(int[] arr) {
 		// code here
