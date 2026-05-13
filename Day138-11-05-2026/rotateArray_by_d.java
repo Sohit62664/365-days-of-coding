@@ -1,3 +1,18 @@
+Left Rotation by 2
+
+Move first 2 elements to end:
+
+3 4 5 6 1 2
+
+Right Rotation by 2
+
+Move last 2 elements to front:
+
+5 6 1 2 3 4
+
+
+
+
 For left rotation by d, reversal algorithm is: gfg rotate by d
 1. Reverse first d elements 
 2. Reverse remaining n-d elements 
