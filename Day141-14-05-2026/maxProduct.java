@@ -29,3 +29,33 @@ class Solution {
         
     }
 }
+
+
+
+// optimized approach 
+
+class Solution {
+    int maxProduct(int[] arr) {
+        // code here
+        // Using Suffix , Prifix Approach  or simillar to Array Preprocessing
+        
+        int suff=1;
+        int pre = 1;
+        
+        
+        int max_product = arr[0]; // or Integer.MAX_VALUE
+        int n = arr.length;
+        
+        for(int i =0  ; i< n ; i++){
+            if(suff == 0) suff= 1 ;
+            if(pre == 0) pre = 1 ;
+            
+            suff*= arr[i] ;
+            pre *= arr[n-i-1];
+            
+            max_product= Math.max(max_product , Math.max(suff , pre));
+        }
+        
+        return max_product;
+    }
+}
