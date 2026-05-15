@@ -1,4 +1,39 @@
 class Solution {
+    public static int[] productExceptSelf(int arr[]) {
+        // code here
+        int n = arr.length;
+		int [] suff = new int[n];
+		int [] pre = new int[n];
+		
+		int p = 1 ; 
+		int s = 1 ; 
+		pre[0]=1;
+		suff[n-1]= 1 ;
+		for(int i =0 ; i< n-1; i++){
+		    pre[i+1]= arr[i]*p;
+		    suff[n-i-2]= arr[n-1-i]*s;
+		    
+		    p = pre[i+1];
+		    s= suff[n-i-2];
+		}
+		
+		
+		for(int i=0 ; i< n ; i++){
+		    arr[i]= pre[i]* suff[i];
+		}
+		
+		
+		return arr;
+    }
+}
+
+
+
+
+
+
+
+class Solution {
 	public static int[] productExceptSelf(int arr[]) {
 		// code here
 		// by Array Preprocessing or Suffix-prefix Approach
