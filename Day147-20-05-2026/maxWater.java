@@ -30,3 +30,39 @@ class Solution {
         return ans;
     }
 }
+
+
+// A little optimize one 
+// same idea but calculating the sum in O(1)
+
+
+class Solution {
+	public int maxWater(int arr[]) {
+		// to make it optimise we need to take the sum in O(1)
+		
+		// this can be done via array Pre Processing
+		
+		int ans = 0 ;
+		
+		int n = arr.length;
+		int [] prefix = new int[n];
+		int [] suffix = new int[n];
+		
+		int pre = 0;
+		int suff = 0;
+		for (int i = 0 ; i<n ; i++) {
+			int j = n - i -1;
+			pre = Math.max(arr[i], pre);
+			prefix[i] = pre;
+			
+			suff = Math.max(arr[j], suff);
+			suffix[j] = suff;
+		}
+		
+		for (int i = 0 ; i<n ; i++) {
+			ans += Math.min(prefix[i], suffix[i]) - arr[i];
+		}
+		
+		return ans;
+	}
+}
