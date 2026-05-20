@@ -66,3 +66,40 @@ class Solution {
 		return ans;
 	}
 }
+
+
+
+// We can Still optimize it
+// see what we are doing right now
+// Storing the max from the left and right in an array
+// so why not we take two variables which can store the max from the left and max from the right
+
+class Solution {
+	public int maxWater(int arr[]) {
+		
+		int ans = 0 ;
+		
+		int n = arr.length;
+		
+		int lmax = 0 ;
+		int rmax = 0 ;
+		
+		int left = 0 ;
+		int right = n - 1;
+		
+		while (left <= right) {
+			if (lmax<rmax) {
+				ans += Math.max(0, lmax - arr[left]);
+				lmax = Math.max(lmax, arr[left]);
+				left++;
+				
+			} else {
+				ans += Math.max(0, rmax - arr[right]);
+				rmax = Math.max(rmax, arr[right]);
+				right--;
+			}
+		}
+		
+		return ans;
+	}
+}
