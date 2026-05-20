@@ -63,3 +63,55 @@ class Solution {
 		return false;
 	}
 }
+
+
+
+
+
+	
+// Space optimization 
+// we can do with in O(1) using HashMap
+
+class Solution {
+	public boolean isProduct(int [] arr, long target) {
+		
+		
+		HashMap<Long, Integer> map = new HashMap<>();
+		int n = arr.length;
+		
+		for (int num : arr) {
+			long numm = num;
+			map.put(numm, map.getOrDefault(numm , 0) + 1);
+		}
+		
+		for (int i = 0 ; i<n ; i++) {
+			
+			if (arr[i] == 0) {
+				if (target == 0)
+					return true;
+				continue ;
+			}
+			
+			if (target % arr[i] != 0)
+				continue;
+			
+			long comp = target/arr[i] ;
+			
+			if (map.containsKey(comp)) {
+				if (arr[i] == comp) {
+					if (map.get(comp)>1) {
+						return true ;
+					}
+				}else{
+				    return true;
+				}
+			}
+		}
+		
+		return false;
+	}
+}
+
+
+
+// Note:- the wrapper class for long is Long 
