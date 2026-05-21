@@ -1,3 +1,5 @@
+// myAtoi means a custom function that converts a string into an integer (ASCII to Integer)
+
 class Solution {
     public int myAtoi(String s) {
         // code here
