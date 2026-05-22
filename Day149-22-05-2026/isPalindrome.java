@@ -1,0 +1,26 @@
+class Solution {
+    boolean isPalindrome(String s) {
+        // code here
+        char[] arr = s.toCharArray();
+        
+        int i=0 , j = arr.length-1;
+        
+        while(i<j){
+            char temp = arr[i];
+            arr[i]= arr[j];
+            arr[j]= temp;
+            i++;
+            j--;
+            
+        }
+        
+        String str = new String(arr);
+        
+        
+        if(str.equals(s)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
