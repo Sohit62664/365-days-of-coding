@@ -77,4 +77,47 @@ class Solution {
 
 
 
+
 // more optimize n time with 1 space
+
+
+class Solution {
+	public int findIndex(String s) {
+		// code here
+		// no. of closing in n-k == no. of opening in 0 to k
+		
+		// opening from the front = closing from the last index
+		// logic :>>>----->  remain closing = total - closing before the index
+		
+		int n = s.length();
+		int o_count = 0;
+		
+		
+		int c = 0 ;
+		
+		for (int i = 0 ; i<n ; i++) {
+			if (s.charAt(i) == ')') {
+				c++;
+			}
+		}
+		
+		for (int i = 0 ; i<n ; i ++) {
+			if (c == o_count)
+				return i ;
+			
+			if (s.charAt(i) == '(') {
+				o_count++;
+			}
+// 			else
+			if (s.charAt(i) == ')') {
+				c--;
+			}
+			
+		}
+		
+		return n;
+		
+	}
+	
+}
+
