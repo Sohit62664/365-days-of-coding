@@ -76,3 +76,41 @@ class Solution {
 		}
 	}
 };
+
+
+
+
+
+
+// Approach 2 
+
+// User function Template for Java
+
+class Solution {
+
+    static String encryptString(String S) {
+
+        int n = S.length();
+        int count = 1;
+
+        StringBuilder ans = new StringBuilder();
+
+        for(int i = 1; i < n; i++) {
+
+            if(S.charAt(i) == S.charAt(i - 1)) {
+                count++;
+            }
+            else {
+
+                ans.insert(0, Integer.toHexString(count) + S.charAt(i - 1));
+
+                count = 1;
+            }
+        }
+
+        
+        ans.insert(0, Integer.toHexString(count) + S.charAt(n - 1));
+
+        return ans.toString();
+    }
+}
