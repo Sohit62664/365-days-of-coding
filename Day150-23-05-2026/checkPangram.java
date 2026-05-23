@@ -1,3 +1,5 @@
+// A "Panagram" is a sentence containing every letter in the English Alphabet either in lowercase or Uppercase.
+
 class Solution {
 	public static boolean checkPangram(String s) {
 		// code here
