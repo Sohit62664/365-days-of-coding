@@ -40,3 +40,40 @@ class Solution {
 		
 	}
 }
+
+
+
+// Approach 2 
+
+
+class Solution {
+    public boolean areIsomorphic(String s1, String s2) {
+        // code here
+        int n= s1.length();
+        
+        boolean []  marked= new boolean[26];
+        
+        int [] map = new int[26];
+        
+        
+        for(int i=0  ; i< 26 ; i++){
+            map[i]= -1;
+        }
+        
+        for(int i= 0 ; i< n ; i++){
+            int u = s1.charAt(i)-'a';
+            int v = s2.charAt(i)-'a';
+            
+            if(map[u]==-1){
+                
+                if(marked[v]) return false;
+                
+                map[u]= v ;
+                marked[v]= true;
+            }else if(map[u] != v){
+                return false;
+            }
+        }
+        return true;
+    }
+}
