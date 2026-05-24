@@ -14,9 +14,7 @@ class Solution {
 
                 i += m - 1; 
                 // -1 because for loop will do i++
-
             } else {
-
                 ans.append(s.charAt(i));
             }
         }
