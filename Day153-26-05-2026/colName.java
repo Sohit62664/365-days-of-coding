@@ -22,3 +22,32 @@ class Solution {
 		return ans.reverse().toString();
 	}
 }
+
+
+
+
+// Without Using the Array 
+
+
+class Solution {
+	public String colName(int n) {
+		// code here
+		StringBuilder ans = new StringBuilder();
+
+		
+		while (n>0) {
+			int rem = n%26;
+			if(rem == 0 ){
+			    ans.append('Z');
+			    n/=26;
+			    n--;
+			}else{
+			    ans.append((char)('A'+ rem -1) );
+			    n/=26;
+			}
+			
+		}
+		
+		return ans.reverse().toString();
+	}
+}
