@@ -45,3 +45,40 @@ class Solution {
 		return ans.get(pos - 1);
 	}
 }
+
+
+
+// Optimize Recursive Approach
+
+class Solution {
+	
+	// static boolean flag = true;
+	public String profession(int level, int pos) {
+		// code here
+		
+		return helper(level, pos);
+		
+	}
+	static String helper(int level, int pos) {
+		if (pos == 1) {
+			return "Engineer";
+		}
+		String parent = helper(level - 1, (pos + 1)/2);
+		
+		if (pos%2 == 0) {
+			return opp(parent);
+		} else {
+			return parent;
+		}
+		
+	}
+	
+	static String opp(String Parent) {
+		if (Parent.equals("Engineer")) {
+			return "Doctor";
+		} else {
+			return "Engineer";
+		}
+		
+	}
+}
