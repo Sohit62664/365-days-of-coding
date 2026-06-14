@@ -20,3 +20,25 @@ class Solution {
         return -1 ;
     }
 }
+
+
+
+class Solution {
+	int missingNum(int arr[]) {
+		// code here
+		int n = arr.length;
+		n++;
+		
+		long sum = (long)n * (n + 1) / 2; // ast issue was integer Overflow
+		
+		n--;
+		
+		long a_sum = 0 ;
+		
+		for(int num : arr){
+		    a_sum+=num;
+		}
+		int ans = (int)(sum - a_sum);
+		return ans;
+	}
+}
