@@ -22,7 +22,7 @@ class Solution {
 }
 
 
-
+// Optimal
 class Solution {
 	int missingNum(int arr[]) {
 		// code here
@@ -41,4 +41,36 @@ class Solution {
 		int ans = (int)(sum - a_sum);
 		return ans;
 	}
+}
+
+
+
+
+
+class Solution {
+    int missingNum(int arr[]) {
+        // code here
+        // O(n^2);
+        // linear Seearch 
+        
+        
+        int n= arr.length;
+        
+        for(int i =1 ; i <= n+1; i++){
+            if(!search(arr , i)){
+                return i;
+            }
+        }
+        
+        return -1 ;
+    }
+    
+    boolean search(int [] arr , int k ){
+        for(int i =0 ; i< arr.length ; i++){
+            if(arr[i]== k){
+                return true;
+            }
+        }
+        return false;
+    }
 }
