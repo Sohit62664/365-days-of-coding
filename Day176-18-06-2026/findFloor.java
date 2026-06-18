@@ -22,3 +22,31 @@ class Solution {
         return i;
     }
 }
+
+
+
+
+
+class Solution {
+    public int findFloor(int[] arr, int x) {
+        // code here
+        // Optimized Approach 
+        // Binary Search
+        
+        int result = -1;
+        int st =0 ; 
+        int end = arr.length-1 ;
+        
+        while(st <= end){
+            int mid = st + (end-st)/2;
+            
+            if(arr[mid] <= x){
+                result = mid ;
+                st = mid +1;
+            }else{
+                end = mid -1 ;
+            }
+        }
+        return result;
+    }
+}
