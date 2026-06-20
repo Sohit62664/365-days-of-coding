@@ -73,3 +73,56 @@ class Solution {
         return false;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Withot making Graph Class less efficient 45ms but with class 3ms
+class Solution {
+
+    boolean isCycle(int src , int [][] prerequisites , boolean [] visited , boolean [] path){
+        visited[src]= true;
+        path[src]= true ;
+
+        for(int i =0 ; i< prerequisites.length ; i++){
+            int u = prerequisites[i][0];
+            int v = prerequisites[i][1];
+            if(u == src){
+                if(!visited[v]){                
+                    if(isCycle(v , prerequisites , visited , path)){
+                        return true;
+                    }
+                }else if(path[v]){
+                    return true;
+                }
+
+            }
+        }
+        path[src]= false ;
+        return false ;
+
+    }
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        boolean [] visited = new boolean [numCourses];
+        boolean [] path = new boolean [numCourses];
+
+        for(int i = 0 ;i<numCourses ; i++){
+            if(isCycle(i , prerequisites , visited , path)){
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
