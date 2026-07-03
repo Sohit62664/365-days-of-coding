@@ -44,3 +44,24 @@ class Solution {
         return 0 ;
     }
 }
+
+
+
+// Approach 3  Naive 
+class Solution {
+    public int singleNumber(int[] nums) {
+        Arrays.sort(nums);
+
+
+        for(int i = 1 ; i<nums.length ; i+=2 ){
+            int pre = nums[i-1];
+            int curr = nums[i];
+
+            if(pre != curr){
+                return pre;
+            }         
+        }
+
+        return nums[nums.length -1 ];
+    }
+}
