@@ -19,3 +19,39 @@ class Solution {
         
     }
 }
+
+
+// Approach 2 O(nlogn) 
+
+class Solution {
+    public int[] singleNumber(int[] nums) {
+        Arrays.sort(nums);
+        for(int i =1 ; i < nums.length ; i+=2 ){
+            int pre = nums[i-1];
+            int curr = nums[i] ;
+
+            if(pre == curr){
+                nums [i-1] = Integer.MIN_VALUE ;
+                nums[i] = Integer.MIN_VALUE ;
+            }
+        }
+
+        boolean flag = false ;
+
+        int a = 0 ; int b = 0 ; 
+
+        for(int n : nums ){
+            if(n!=Integer.MIN_VALUE && (!flag)){
+                a = n ;
+                flag = true ; 
+            }else if(n != Integer.MIN_VALUE){
+                b = n ;
+            }
+        }
+
+
+        return new int[]{a,b};
+    }
+}
+
+
