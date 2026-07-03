@@ -55,3 +55,25 @@ class Solution {
 }
 
 
+// Approach 3 
+
+class Solution {
+    public int[] singleNumber(int[] nums) {
+
+        int[] ans = new int[2];
+        int idx = 0;
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length;) {
+            if (i == nums.length - 1 || nums[i] != nums[i + 1]) {
+                ans[idx++] = nums[i++];
+
+            } else {
+                i += 2;
+            }
+
+        }
+
+        return ans;
+
+    }
+}
