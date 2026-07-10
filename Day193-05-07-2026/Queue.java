@@ -45,4 +45,8 @@ public class Queue {
     int peek() {
         return arr[front];
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4149d40a4f38a46600e856c603ca56b2397934dd
