@@ -84,3 +84,15 @@ class Solution {
 
 
 
+// O(n) Solution
+class Solution {
+    public int find(int[] arr) {
+        long ans = 0;
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+            ans = (ans + arr[i] + 1) / 2;
+        }
+
+        return (int) ans;
+    }
+}
