@@ -31,3 +31,56 @@ class Solution {
         
     }
 }
+
+
+
+// using binary search 
+
+
+class Solution {
+	public int find(int[] arr) {
+		// code here
+		// Brute force approach
+		// Arrays.sort(arr); flop
+		PriorityQueue<Integer> pq = new PriorityQueue<>();
+		int max = 0 ;
+		for (int i = 0 ; i<arr.length ; i++) {
+			max = Math.max(max, arr[i]);
+		}
+		
+		int low = 1;
+		int high = max;
+		int ans = high;
+		
+		while (low <= high) {
+			int mid = low + (high - low) / 2;
+			
+			if (check(mid, arr)) {
+				ans = mid;
+				high = mid - 1;
+			} else {
+				low = mid + 1;
+			}
+		}
+		
+		return ans;
+		
+	}
+	
+	boolean check(int x, int[] arr) {
+		long curr = x;
+		
+		for (int a : arr) {
+			curr = 2 * curr - a;
+			if (curr < 0)
+				return false;
+		}
+		return true;
+	}
+}
+
+
+
+
+
+
