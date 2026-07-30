@@ -22,3 +22,28 @@ class Solution {
         
     }
 }
+
+
+// implimanting the same approach in another form 
+
+    class Solution {
+    public int maxSubarraySum(int[] arr, int k) {
+        // Code here
+        int sum = 0 ;
+        int max_sum = Integer.MIN_VALUE ;
+        
+        
+        for(int right = 0 ; right < arr.length  ; right ++){
+            sum+= arr[right];
+            if(right>= k-1 ){ // window full
+                max_sum = Math.max(sum , max_sum );
+                sum -= arr[right - k + 1];
+            }
+        }
+        
+        
+        
+        return max_sum ; 
+        
+    }
+}
