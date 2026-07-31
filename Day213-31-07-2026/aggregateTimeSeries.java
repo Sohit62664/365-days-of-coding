@@ -85,3 +85,66 @@ class Solution {
 
     }
 }
+
+
+
+
+//takes 3+hours to solve by both the techniques 
+
+//Optimal  Solution 
+class Solution {
+    public List<List<Integer>> aggregateTimeSeries(int[][] series1, int[][] series2) {
+        int i = 0;
+        int j = 0;
+        int n = series1.length;
+        int m = series2.length;
+
+        List<List<Integer>> list = new ArrayList<>();
+        while (i < n && j < m) {
+            if (series1[i][0] == series2[j][0]) {
+                int time = series1[i][0];
+                int val = series1[i][1];
+
+                val += series2[j][1];
+                list.add(new ArrayList<>(Arrays.asList(time, val)));
+                i++;
+                j++;
+            } else if (series1[i][0] < series2[j][0]) {
+                int time = series1[i][0];
+                int val = series1[i][1];
+                if (j < m) {
+                    val += series2[j][1];
+                }
+
+                list.add(new ArrayList<>(Arrays.asList(time, val)));
+                i++;
+            } else {
+                int time = series2[j][0];
+                int val = series2[j][1];
+                if (i < n) {
+                    val += series1[i][1];
+                }
+
+                list.add(new ArrayList<>(Arrays.asList(time, val)));
+                j++;
+            }
+        }
+
+        while (i < n) {
+            int time = series1[i][0];
+            int val = series1[i][1];
+            list.add(new ArrayList<>(Arrays.asList(time, val)));
+            i++;
+        }
+
+        while (j < m) {
+            int time = series2[j][0];
+            int val = series2[j][1];
+
+            list.add(new ArrayList<>(Arrays.asList(time, val)));
+            j++;
+        }
+
+        return list;
+    }
+}
