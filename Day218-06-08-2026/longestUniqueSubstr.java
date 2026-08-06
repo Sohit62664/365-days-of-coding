@@ -58,7 +58,7 @@ class Solution {
 
 
 
-//Brute Force without set 
+//Brute Force without set O(n^3) 
 
 class Solution {
 	public int longestUniqueSubstr(String s) {
