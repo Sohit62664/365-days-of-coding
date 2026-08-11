@@ -21,3 +21,36 @@ class Solution {
         return max_w;
     }
 }
+
+
+
+
+
+//Optimized approach 
+
+
+class Solution {
+    public int maxArea(int[] height) {
+        //Using Two Pointes Approach 
+
+        int i =0 ; 
+        int j = height.length-1 ;
+
+        int max_w = 0 ;
+        while(i< j ){
+            int len = j - i ;
+            int depth = Math.min(height[j], height[i]);
+
+            max_w  = Math.max( max_w , len * depth);
+
+            if(height [i] < height[j]){
+                i++;
+            }else{
+                j--;
+            }
+            
+        }
+
+        return max_w;
+    }
+}
