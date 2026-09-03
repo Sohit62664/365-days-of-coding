@@ -38,3 +38,36 @@ class Solution {
 
 // Here We are using Postorder why?
 // the Reason is - first we want to process left and right then go to the root
+
+
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        if(root == null) return root ;
+
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
+
+        root.left = right;
+        root.right = left;
+
+        return root;
+    }
+}
