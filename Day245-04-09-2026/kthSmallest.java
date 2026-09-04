@@ -36,3 +36,31 @@ class Solution {
         helper(root.right);
     }
 }
+
+
+
+
+// Approach 02 
+
+class Solution {
+    int i =0 ; 
+    public int kthSmallest(TreeNode root, int k) {
+        TreeNode node = helper(root  , k );
+
+        return node.val ; 
+        
+    }
+
+    TreeNode helper(TreeNode root , int k ){
+
+        if(root == null) return root;
+
+        TreeNode left = helper(root.left  , k);
+        if(left!=null) return left;
+        i++;
+        if(i == k) return root ;
+        return helper(root.right  , k);
+
+
+    }
+}
