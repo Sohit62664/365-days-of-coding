@@ -56,7 +56,7 @@ class Solution {
         if(root == null) return root;
 
         TreeNode left = helper(root.left  , k);
-        if(left!=null) return left;
+        if(left!=null) return left; // we have found our Answer don't go to Right 
         i++;
         if(i == k) return root ;
         return helper(root.right  , k);
