@@ -46,3 +46,43 @@ class Solution {
         }
     }
 }
+
+
+
+// More optimized Approach 
+	// Boyer-Moore Majority Voting Algorithm
+class Solution {
+	int majorityElement(int arr[]) {
+		// code here
+		
+		int count = 0 ;
+		int candidate = 0 ;
+		for (int i = 0 ; i<arr.length ; i++) {
+			if (count == 0) {
+				count = 1;
+				candidate = arr[i];
+			} else
+			
+			if (arr[i] == candidate) {
+				count++;
+			} else {
+				count--;
+			}
+		}
+		
+		int f = 0 ;
+		
+		for (int num : arr) {
+			if (num == candidate) {
+				f++;
+			}
+		}
+		
+		if (f > arr.length/2) {
+			return candidate;
+		} else {
+			return - 1 ;
+		}
+	}
+}
+
