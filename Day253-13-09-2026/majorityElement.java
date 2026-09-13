@@ -20,3 +20,29 @@ class Solution {
 		
 	}
 }
+
+
+
+//Space Optimized Approach 
+class Solution {
+    int majorityElement(int arr[]) {
+        // code here
+        // O(1) --> space 
+        
+        Arrays.sort(arr);
+        int mid = arr[arr.length/2];
+        
+        int f= 0 ;
+        for(int num : arr){
+            if(num == mid){
+                f++;
+            }
+        }
+        
+        if(f > arr.length/2){
+            return mid;
+        }else{
+            return -1 ;
+        }
+    }
+}
