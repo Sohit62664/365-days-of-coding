@@ -31,3 +31,34 @@ class Solution {
         return result;
     }
 }
+
+
+
+
+// Optimized approach 
+
+    class Solution {
+	public ArrayList<Integer> findMajority(int[] arr) {
+		// code here
+		
+		int n = arr.length;
+		HashMap<Integer, Integer> map = new HashMap<>();
+		ArrayList<Integer> result = new ArrayList<>();
+		
+		for (int num : arr) {
+			map.put(num, map.getOrDefault(num, 0) + 1);
+		}
+		
+		for (int num : map.keySet()) {
+			int f = map.get(num);
+			
+			if (f>(n/3)) {
+				result.add(num);
+			}
+		}
+		Collections.sort(result);
+		
+		return result;
+	}
+}
+
