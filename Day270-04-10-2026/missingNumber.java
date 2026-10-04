@@ -1,3 +1,5 @@
+// Approach O(N) , O(N)
+
 class Solution {
     public int missingNumber(int[] arr) {
         // code here
@@ -20,3 +22,39 @@ class Solution {
         
     }
 }
+
+
+
+
+// Approach --->> O(NlogN) , O(1) 
+class Solution {
+    public int missingNumber(int[] arr) {
+        // code here
+        Arrays.sort(arr)  ;
+        int n= arr.length ;
+        int max = arr[n-1];
+        
+        if(max< 0) return 1 ;
+        
+        int i =0 ; 
+        while(i< arr.length && arr[i]<=0){
+            i++;
+        }
+        
+        
+        
+        for(int j = 1 ; j<= max+1 && i < arr.length ; j++){
+            if(arr[i] != j){
+                return j;
+            }
+            int val = arr[i];
+            
+            while(i < arr.length && arr[i] == val )
+            i++;
+        }
+        
+        return max+1 ;
+    }
+}
+
+
