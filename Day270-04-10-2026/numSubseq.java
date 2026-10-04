@@ -9,7 +9,7 @@ class Solution {
     void helper(int[] nums, int target, int min, int max, int i) {
 
         if (i == nums.length) {
-            if (min != Integer.MAX_VALUE && max - min <= target) {
+            if (min != Integer.MAX_VALUE && max + min <= target) {
                 count++;
             }
             return;
