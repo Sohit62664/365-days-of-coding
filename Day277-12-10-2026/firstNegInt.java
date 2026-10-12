@@ -82,3 +82,35 @@ class Solution {
 
 
 // Shrink — remove the element leaving the window and move left. 
+
+
+
+
+class Solution {
+    static List<Integer> firstNegInt(int arr[], int k) {
+        // code here
+        //O(N) TIMA AND o(1) SPACE Solution ;
+        
+        
+        int neg_index =0 ; 
+        int n= arr.length;
+        
+        List<Integer> ans = new ArrayList<>();
+        for(int i = k -1 ; i< arr.length ; i++){
+            while(neg_index < i &&(neg_index <= i-k ||arr[neg_index] >= 0  )){
+                neg_index++ ;
+            }
+            
+            
+            //if got negative;
+            
+            if(neg_index< n && arr[neg_index] < 0){
+                ans.add(arr[neg_index]);
+            }else{
+                ans.add(0);
+            }
+        }
+        
+        return ans;
+    }
+}
