@@ -21,3 +21,31 @@ class Solution {
         return count;
     }
 }
+
+
+
+
+//optimize approach 
+class Solution {
+	public int numberOfSubarrays(int[] arr, int target) {
+		// code here
+		return helper(arr, target) - helper(arr, target - 1);
+	}
+	int helper(int [] arr, int k) {
+		int left = 0 ;
+		int sum = 0 ;
+		int count = 0 ;
+		for (int r = 0; r<arr.length ; r++) {
+			sum += arr[r];
+			
+			while (sum > k) {
+				sum -= arr[left];
+				left++;
+			}
+			
+			count += r - left + 1;
+			
+		}
+		return count;
+	}
+}
