@@ -20,3 +20,39 @@ class Solution {
         return res ; 
     }
 }
+
+
+//optimize code
+
+class Solution {
+	public int kBitFlips(int[] arr, int k) {
+		// code here
+		
+		Queue<Integer> q = new ArrayDeque<>();
+		int n = arr.length;
+		int flips = 0 ;
+		
+		for (int i = 0 ; i<n ; i++) {
+			while (!q.isEmpty() && q.peek() < i - k + 1)
+				q.poll();
+			
+			int value = arr[i] ^ (q.size() % 2);
+			
+			if (value == 0) {
+				// Cannot flip k elements from this position
+				if (i + k > n) {
+					return - 1;
+				}
+				
+				q.offer(i);
+				flips++;
+			}
+			
+		}
+		
+		
+		return flips;
+	}
+}
+
+
