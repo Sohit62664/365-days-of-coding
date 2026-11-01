@@ -22,3 +22,40 @@ class Solution {
         return -1 ;
     }
 }
+
+
+
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        int n = nums.length;
+        for (int i = 0; i < nums.length; i++) {
+            while (nums[i] != i + 1 && !(nums[i] <= 0 || nums[i] > n)) {
+                if(nums[i] != nums[nu.ms[i]-1])
+                swap(i, nums[i] - 1, nums);
+                else break ;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != i + 1)
+                return i + 1;
+        }
+
+        return n + 1;
+    }
+
+    void swap(int i, int j, int[] nums) {
+        // int a = nums[i];
+        // int b = nums[j];
+        // never use this in that way bwecause you are Swaping the local Variables
+        // a = a^b ;
+        // b = a^b ;
+        // a = a^b ;
+
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+
+        return;
+    }
+}
