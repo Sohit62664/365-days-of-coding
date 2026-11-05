@@ -28,4 +28,32 @@ class Solution {
 
 
 // Resursive Solution 02
+class Solution {
+	static int perfectSum(int[] arr, int target) {
+		// code here
+		int n = arr.length;
+		
+		return f(n - 1, target, arr);
+	}
+	
+	static int f(int i, int sum, int [] arr) {
+		if(i < 0 ){
+		    if(sum == 0){
+		        return 1 ;
+		    }else{
+		        return 0 ;
+		    }
+		}
+		
+		int np = f(i-1 , sum , arr );
+		int pi = 0 ; 
+		
+		if(arr[i] <= sum){
+		    pi = f(i-1  , sum - arr[i] , arr);
+		}
+		
+		
+		return np + pi ; 
+	}
+}
 
