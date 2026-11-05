@@ -132,3 +132,46 @@ class Solution {
 		return dp[i][sum]=  np + pi;
 	}
 }
+
+
+//Tabulsation 
+class Solution {
+	static int perfectSum(int[] arr, int target) {
+		// code here
+		int n = arr.length;
+		
+		int dp [][] = new int[n][target + 1];
+		
+		// basecases
+		for (int i = 0 ; i < n ; i++) {
+			dp[i][0] = 1 ;
+		}
+		
+		dp[0][0] = (arr[0] == 0)? 2:1 ;
+		if (arr[0] != 0 && arr[0] <= target) {
+			//  if(arr[i])
+			
+			dp[0][arr[0]] = 1 ;
+			
+		}
+		
+		for (int i = 1 ; i<n ; i++) {
+			
+			// see here if i use tar = 1 then it may possible that our tar = 0 , never get updated
+			// evdn when we have multiple number of zeros
+			for (int tar = 0 ; tar <= target ; tar++) {
+				int nt = dp[i - 1][tar];
+				
+				int t = 0 ;
+				if (arr[i] <= tar) {
+					t = dp[i - 1][tar - arr[i]];
+				}
+				
+				dp[i][tar] = (nt + t);
+			}
+		}
+		
+		return dp[n - 1][target];
+	}
+	
+}
