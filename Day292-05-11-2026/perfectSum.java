@@ -119,11 +119,11 @@ class Solution {
 		        return 0 ;
 		    }
 		}
+		if(dp[i][sum] != -1) return dp[i][sum];
 
 		int np = f(i-1 , sum , arr , dp);
 		int pi = 0 ; 
 
-		if(dp[i][sum] != -1) return dp[i][sum];
 		
 		if(arr[i] <= sum){
 		    pi = f(i-1  , sum - arr[i] , arr , dp);
