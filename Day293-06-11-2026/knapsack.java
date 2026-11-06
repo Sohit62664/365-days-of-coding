@@ -91,3 +91,39 @@ class Solution {
 		return dp[i][W];
 	}
 }
+
+
+
+
+//Memoization
+class Solution {
+	public int knapsack(int W, int val[], int wt[]) {
+		// code here
+		int n = val.length;
+		int dp[][] = new int [n][W + 1];
+		for (int [] row : dp) {
+			Arrays.fill(row, -1);
+		}
+		
+		return f(n - 1, W, val, wt , dp);
+	}
+	
+	int f(int i, int W, int[] val, int [] wt , int dp [][]) {
+		if (i<0) {
+			return 0 ;
+		}
+		
+		if(dp[i][W] != -1 ) return dp[i][W];
+		
+		int np = 0 + f(i - 1, W, val, wt , dp );
+		
+		int pi = Integer.MIN_VALUE;
+		
+		if (W - wt[i] >= 0) {
+			pi = val[i] + f(i - 1, W - wt[i], val, wt , dp);
+		}
+		
+		return  dp[i][W] = Math.max(np, pi);
+	}
+}
+
