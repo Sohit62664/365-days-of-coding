@@ -12,8 +12,6 @@ class Solution {
         if(diff > tsum) return 0 ; 
         int target = (diff+ tsum)/2;
         
-        
-        
         return helper(n-1 , target , arr);
     }
     
@@ -79,3 +77,62 @@ class Solution {
 
 
 //Tabulation
+
+
+class Solution {
+    public int countPartitions(int[] arr, int diff) {
+        // code here
+        int n = arr.length ; 
+        int tsum =0 ;
+        for(int x : arr) tsum += x ; 
+        
+        if((( diff+tsum)  & 1) !=0 ) return 0 ; 
+        if(diff > tsum) return 0 ; 
+        int target = (diff+ tsum)/2;
+
+        int dp [][] = new int[n][tsum+1];
+        
+        // base case 
+        for(int i =0 ;i < n ; i++){
+            dp[i][0] =  1 ;
+        }
+        
+        if(arr[0] <= target){
+            dp[0][arr[0]] = (arr[0] == 0) ? 2 : 1 ;
+        }
+        
+        // nested loops 
+        for(int i =1 ; i < n ; i++){
+            for(int tar = 0 ; tar<= target ; tar++){
+                int np = dp[i-1][tar] ;
+                int pi =0 ; 
+                if(arr[i] <= tar){
+                    pi = dp[i-1][tar-arr[i]];
+                }
+                
+                dp[i][tar] = np + pi ; 
+            }
+        }
+        
+        return dp[n-1][target];
+        
+    }
+    
+    int helper(int i , int tar , int [] arr , int dp[][]){
+        if(i < 0){
+            if(tar == 0 ) return 1; 
+            else return 0 ; 
+        }
+        
+        
+        if(dp[i][tar]!= -1) return dp[i][tar];
+        
+        int np = helper(i - 1 , tar , arr , dp);
+        int pi = 0; 
+        if(arr[i] <= tar){
+            pi = helper(i-1 , tar- arr[i]  , arr , dp);
+        }
+        
+        return dp[i][tar] =  np + pi ; 
+    }
+}
