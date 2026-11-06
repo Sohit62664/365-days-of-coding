@@ -127,3 +127,44 @@ class Solution {
 	}
 }
 
+
+
+class Solution {
+	public int knapsack(int W, int val[], int wt[]) {
+		// code here
+		int n = val.length;
+		int dp[][] = new int [n][W + 1];
+		
+		
+		
+		for (int w = 0; w <= W; w++) {
+			if ( wt[0] <= w ) {
+				dp[0][w] = val[0] ;
+			} else {
+				dp[0][w] = 0 ;
+			}
+		}
+		
+		// 		if(W- wt[0] >= 0 ){
+		// 		    dp[0][W-wt[0]] = val[0];
+		// 		}
+		
+		for (int i = 1 ; i<n ; i++) {
+			for (int w = 0 ; w <= W ; w++) {
+				int np = dp[i - 1][w];
+				int pi = 0 ;
+				
+				if (w - wt[i] >= 0) {
+					pi = val[i] + dp[i - 1][w - wt[i]];
+				}
+				
+				dp[i][w] = Math.max(np, pi);
+			}
+		}
+		
+		return dp[n - 1][W];
+	}
+	
+}
+
+
