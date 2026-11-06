@@ -22,6 +22,34 @@ class Solution {
     }
 }
 
+// in the m1 , While applying the memoization We carefull becouse the Valuse will be combined and we will use both the result at the Same Time
+
+
+class Solution {
+    public int knapsack(int W, int val[], int wt[]) {
+        // code here
+        int n =  val.length;
+        
+        return f(n-1 , W , val , wt);
+    }
+    
+    int f(int i , int W , int[] val , int [] wt){
+        if(i<0){
+            return 0 ;
+        }
+        
+        int np = 0+ f(i-1 , W , val , wt);
+        
+        int pi = Integer.MIN_VALUE;
+        
+        if(W-wt[i] >=0){
+            pi = val[i] + f(i-1 , W-wt[i] , val , wt);
+        }
+        
+        return Math.max(np , pi);
+    }
+}
+
 
 
 
