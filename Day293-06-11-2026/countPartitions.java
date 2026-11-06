@@ -32,3 +32,50 @@ class Solution {
         return np + pi ; 
     }    
 }
+
+
+
+
+// Memoization 
+class Solution {
+    public int countPartitions(int[] arr, int diff) {
+        // code here
+        int n = arr.length ; 
+        int tsum =0 ;
+        for(int x : arr) tsum += x ; 
+        
+        if((( diff+tsum)  & 1) !=0 ) return 0 ; 
+        if(diff > tsum) return 0 ; 
+        int target = (diff+ tsum)/2;
+
+        int dp [][] = new int[n][tsum+1];
+        
+        for(int [] row : dp){
+            Arrays.fill(row , -1);
+        }
+        
+        return helper(n-1 , target , arr , dp) ;
+    }
+    
+    int helper(int i , int tar , int [] arr , int dp[][]){
+        if(i < 0){
+            if(tar == 0 ) return 1; 
+            else return 0 ; 
+        }
+        
+        
+        if(dp[i][tar]!= -1) return dp[i][tar];
+        
+        int np = helper(i - 1 , tar , arr , dp);
+        int pi = 0; 
+        if(arr[i] <= tar){
+            pi = helper(i-1 , tar- arr[i]  , arr , dp);
+        }
+        
+        return dp[i][tar] =  np + pi ; 
+    }
+}
+
+
+
+//Tabulation
