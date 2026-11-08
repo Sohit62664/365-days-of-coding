@@ -1,0 +1,39 @@
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        int n = coins.length;
+        if (amount == 0)
+            return 0;
+        if (n == 1 && coins[0] > amount)
+            return -1;
+        int[][] dp = new int[n][amount + 1];
+        for (int tar = 1; tar < amount + 1; tar++) {
+
+            if (tar % coins[0] != 0) {
+                dp[0][tar] = Integer.MAX_VALUE;
+            } else {
+                dp[0][tar] = tar / coins[0];
+            }
+
+        }
+
+        for (int i = 1; i < n; i++) {
+            for (int tar = 1; tar <= amount; tar++) {
+                int np = dp[i - 1][tar];
+                int pi = Integer.MAX_VALUE;
+
+                if (tar >= coins[i]) {
+
+                    int res = dp[i][tar - coins[i]];
+                    if (res != Integer.MAX_VALUE) {
+                        pi = res + 1;
+                    }
+
+                }
+
+                dp[i][tar] = Math.min(np, pi);
+            }
+        }
+        return dp[n - 1][amount] != Integer.MAX_VALUE ? dp[n - 1][amount] : -1;
+    }
+
+}
