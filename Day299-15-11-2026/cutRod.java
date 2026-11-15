@@ -69,3 +69,36 @@ class Solution {
         return dp[i][N]= Math.max(nt , take);
     }
 }
+
+
+
+// Tabulation
+class Solution {
+	public int cutRod(int[] price) {
+		int n = price.length;
+		
+		int dp[][] = new int[n][n + 1];
+		
+		// base case
+		for (int i = 0 ; i <= n ; i++) {
+			dp[0][i] = i*price[0];
+		}
+		
+		// nested loops
+		for (int i = 1 ; i<n ; i++) {
+			for (int N = 0 ; N <= n ; N++) {
+				int nt = 0 + dp[i - 1][N];
+				int take = Integer.MIN_VALUE;
+				
+				int rd = i + 1 ;
+				if (rd <= N) {
+					take = price[i] + dp[i][N - rd];
+				}
+				
+				dp[i][N] = Math.max(nt, take);
+			}
+		}
+		return dp[n - 1][n];
+	}
+	
+}
