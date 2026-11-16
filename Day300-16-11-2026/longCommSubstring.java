@@ -72,7 +72,7 @@ class Solution {
 		int m = s2.length();
 		int l = Math.min(n, m);
 		
-		int dp[][][] = new int[n][m][l];
+		int dp[][][] = new int[n][m][l+1];
 		for (int y[][] : dp) {
 			for (int[] x : y) {
 				Arrays.fill(x, -1);
@@ -98,7 +98,7 @@ class Solution {
 		}
 		
 		if (dp[i][j][l] != -1)
-			return dp[i][j][l];
+			return Math.max(max , dp[i][j][l]);
 		int matched = 0 ;
 		
 		if (s1.charAt(i) == s2.charAt(j)) {
@@ -113,4 +113,3 @@ class Solution {
 		
 	}
 }
-
