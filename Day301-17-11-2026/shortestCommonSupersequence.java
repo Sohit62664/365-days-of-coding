@@ -17,13 +17,15 @@ class Solution {
                 ans[ind--] = str1.charAt(i-1) ;
                 i--; j--;
             }else if(dp[i-1][j]> dp[i][j-1]){
-                ans[ind--] = str1.charAt(i-1) ;
+                ans[ind--] = str1.charAt(i-1) ; // because i is getting out so take the ith one
                 i--;
             }else{
-                ans[ind--] = str2.charAt(j-1) ;
+                ans[ind--] = str2.charAt(j-1) ; //because j is getting out so take that
                 j--;
             }
         }
+
+        //now there may be i or j can be greter than 0 because it is the last remainings which prob will not a bale to Taken becouce i or j reached to 0
 
         while(i> 0){
             ans[ind--] = str1.charAt(i-1) ;
