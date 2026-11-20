@@ -31,3 +31,28 @@ class Solution {
         return dp[0][1][k];
     }
 }
+
+
+
+// recursive Solution 
+
+
+class Solution {
+    public int maxProfit(int k, int[] prices) {
+        int n = prices.length;
+        return f(0 , 1 , n , k , prices);
+    }
+
+    int f(int i , int buy , int n , int k , int[] prices){
+        if(i == n || k ==0 ) {
+            return 0 ;
+        }
+        
+        if(buy == 1){
+            return Math.max(f(i+1 , buy , n , k , prices ) , -prices[i] + f(i+1 , 0 , n , k , prices));
+        }else{
+            return Math.max( f(i+1 , buy , n , k , prices) , prices[i] + f(i + 1 , 1  , n , k-1 , prices) );
+        }
+    }
+}
+    
