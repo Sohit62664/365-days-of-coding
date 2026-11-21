@@ -18,3 +18,34 @@ class Solution {
         return Math.max(np , p );
     }
 }
+
+
+
+//memoization 
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int n= nums.length ;
+        // int e = (int) 10e4 ;
+        int dp[][] = new int[n][n+1];
+
+        for(int row[]: dp){
+            Arrays.fill(row , -1);
+        }
+        return f(n-1 , -1 , nums , dp );
+    }
+
+    int f(int i , int prev ,int []nums , int [][] dp){
+        if(i< 0) return 0 ;
+        // int index = (int) 10e4 + prev ; 
+        if(dp[i][prev+1] != -1) return dp[i][prev+1];
+
+        int np =  f(i-1 , prev , nums , dp);
+        int p = 0 ;
+        
+        if(prev== -1 || nums[i] <nums[prev]){
+            p = 1+ f(i-1 , i, nums  , dp);
+        }
+
+        return dp[i][prev+1] = Math.max(np , p );
+    }
+}
