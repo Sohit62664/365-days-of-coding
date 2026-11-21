@@ -49,3 +49,30 @@ class Solution {
         return dp[i][prev+1] = Math.max(np , p );
     }
 }
+
+
+
+//recursion
+
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int n = nums.length ;
+
+        
+        return f(0 ,  -1 , n , nums );
+    }
+
+    int f(int i , int prev_index ,int n , int[] nums ){
+        if(i == n) return 0 ;
+
+        int nt =  f(i+1 , prev_index  , n , nums);
+
+        int take= 0 ; 
+
+        if(prev_index==-1 || nums[prev_index] < nums[i] ){
+            take =1 +  f(i+1 , i , n , nums);
+        }
+
+        return Math.max(take , nt);
+    }
+}
