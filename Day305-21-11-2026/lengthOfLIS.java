@@ -154,3 +154,51 @@ class Solution {
         return maxi;
     }
 }
+
+
+
+
+//Using Binry Search 
+
+
+class Solution {
+    public int lengthOfLIS(int[] arr) {
+        int n = arr.length;
+        
+        ArrayList<Integer> ls = new ArrayList<>();
+        ls.add(arr[0]);
+        int index = 0 ;
+        for(int i = 1 ; i< n ; i++){
+            if(ls.get(index) < arr[i]){
+                ls.add(arr[i]);
+                index++;
+            }else{
+                int ind = search(ls , 0 , index , arr[i]);
+                
+                ls.set(ind , arr[i]);
+                
+            }
+        }
+
+        System.out.println(ls);
+        
+        return index+1 ;
+    }
+
+    int search(ArrayList<Integer> ls , int st , int end , int target){
+        
+        while(st<=end){
+            int mid = st+(end-st) / 2 ; 
+            
+            if(ls.get(mid) == target) {
+                return mid ;
+            }else if(ls.get(mid) < target ){
+                st = mid+ 1;
+            }else{
+                end = mid-1;
+            }
+        }
+        
+        return st;
+    }
+}
