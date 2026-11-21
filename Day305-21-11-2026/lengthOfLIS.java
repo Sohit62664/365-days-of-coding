@@ -106,3 +106,27 @@ class Solution {
         return dp[i][prev_index+1] = Math.max(take , nt);
     }
 }
+
+
+
+// Tabulization 
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int n = nums.length;
+        int dp[][]= new int[n+1][n+1];
+
+        for(int i = n-1 ; i>= 0 ; i--){
+            for(int pi = -1 ; pi<= n-1 ; pi++){
+                int nt = dp[i+1][pi+1];
+                int take =0 ;
+
+                if(pi== -1 || nums[i]> nums[pi]){
+                    take = 1 + dp[i+ 1][i+1];
+                }
+
+                dp[i][pi+1] = Math.max(nt , take);
+            }
+        }
+        return dp[0][0];
+     }
+}
