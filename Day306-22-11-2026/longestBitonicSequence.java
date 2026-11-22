@@ -95,3 +95,45 @@ class Solution {
         
     }
 }
+
+
+
+
+// Standard tabulize approach 
+
+class Solution {
+    public static int longestBitonicSequence(int n, int[] nums) {
+        // code here
+        
+        int ldp [] = new int [n];
+        int rdp [] = new int [n];
+        Arrays.fill(ldp , 1);
+        Arrays.fill(rdp , 1);
+        for(int i = 1 ; i < n ; i++){
+            for(int j = 0 ; j < i  ; j++){
+                if(ldp[i] < 1 + ldp[j] &&  nums[i] > nums[j]){
+                    ldp[i] = 1 + ldp[j];
+                }
+            }
+        }
+        
+        
+        for(int i = n-2 ; i >= 0  ; i-- ){
+            for(int j = n-1 ; j > i ; j-- ){
+                if(rdp[i] < 1 + rdp[j] &&  nums[i] > nums[j]){
+                    rdp[i] = 1 + rdp[j];
+                }
+            }
+        }
+        
+        int max = 0 ;
+        for(int i = 1 ; i< n-1 ; i++){
+            
+            if(ldp[i] > 1 && rdp[i] > 1)
+            max = Math.max(max,ldp[i] + rdp[i] - 1);
+        }
+        
+        return max ;
+    }
+}
+
