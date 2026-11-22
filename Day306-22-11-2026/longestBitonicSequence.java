@@ -37,3 +37,61 @@ class Solution {
         
     }
 }
+
+
+
+
+//4D Dp
+
+class Solution {
+    public static int longestBitonicSequence(int n, int[] nums) {
+        // code here
+        int  dp [][][][] = new int[n][n+1][2][2];
+        // int dp[][][][] = new int[n][n + 1][2][2];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= n; j++) {
+                for (int k = 0; k < 2; k++) {
+                    Arrays.fill(dp[i][j][k], -1);
+                }
+            }
+        }
+        
+        
+        int ans = f(0 , -1 , 1 , nums , n  , 0 , dp);
+        
+        return (ans < 0) ? 0 : ans;
+    }
+    
+    static int f(int i , int pre ,int inc , int[] arr , int n  , int hasInc  , int [][][][] dp){
+        
+        if(i == n ){
+            return (inc == 0 && hasInc == 1) ? 0 : -100000 ;
+        }
+        if(dp[i][pre+1][inc][hasInc] != -1)   return dp[i][pre+1][inc][hasInc] ;
+        int np = f(i+1 , pre , inc , arr , n  , hasInc , dp);
+        int pi = -100000 ;
+        
+        if(inc == 1){
+            //either go with increasing order 
+            if(pre == -1 || arr[i] > arr[pre]){
+                pi = 1 + f(i+1 , i , 1 , arr , n , 1 , dp);
+            }
+            //either choose decreasing 
+            
+            if(pre != -1 && arr[i] < arr[pre] &&hasInc==1){
+                int pii = 1 + f(i+1 , i , 0 , arr , n , hasInc, dp);
+                
+                pi = Math.max(pi , pii);
+            }
+        }else{
+            if(arr[i] < arr[pre]){
+                int pii = 1 + f(i+1 , i , 0 , arr, n , hasInc, dp);
+                pi = Math.max(pi , pii);
+            }
+        }
+        
+        return dp[i][pre+1][inc][hasInc] = Math.max(np , pi);
+        
+    }
+}
