@@ -1,3 +1,35 @@
+//Recursion
+class Solution {
+    public int minCost(int n, int[] cuts) {
+        Arrays.sort(cuts);
+        int[] nc = new int[cuts.length+2];
+
+        nc[0] = 0 ;
+        nc[cuts.length +1] = n;
+
+        for(int i = 1 ; i<= cuts.length ; i++){
+            nc[i]= cuts[i-1];
+        }
+        return f( 1 , cuts.length , nc );
+    }
+
+    int f(int i , int j , int [] cuts ){
+        if(i>j) return 0;
+
+        int min = (int) 1e9;
+
+        for(int k = i ; k <= j ; k++){
+            int cost = cuts[j+1] - cuts[i-1] + f(i , k-1 , cuts) + f(k+1 , j , cuts);
+            // System.out.println(cost);
+             min = Math.min(min , cost);
+        }
+
+        return min ;
+    }
+}
+
+
+//Memization
 class Solution {
     public int minCost(int n, int[] cuts) {
 
