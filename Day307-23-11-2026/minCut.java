@@ -78,3 +78,40 @@ class Solution {
         return true;
     }
 }
+
+
+//Tabulation 
+
+class Solution {
+    public int minCut(String s) {
+        char ch[] = s.toCharArray();
+        int n = s.length();
+        int dp[] = new int[n+1];
+        for (int i = n - 1; i >= 0; i--) {
+            int count = Integer.MAX_VALUE;
+            for (int k = i; k < ch.length; k++) {
+
+                if (palindrom(i, k, ch)) {
+                    int cn = 1 + dp[k + 1];
+                    count = Math.min(count, cn);
+                }
+            }
+            dp[i] = count ; 
+        }
+
+        return dp[0]-1;
+    }
+
+    boolean palindrom(int i, int j, char ch[]) {
+
+        while (i <= j) {
+            if (ch[i] != ch[j]) {
+                return false;
+            }
+            i++;
+            j--;
+        }
+
+        return true;
+    }
+}
