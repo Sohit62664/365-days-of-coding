@@ -82,3 +82,38 @@ class Solution {
         return dp[i][j][l][r] = coins;
     }
 }
+
+
+// Tabulation
+class Solution {
+    public int maxCoins(int[] nums) {
+        int n = nums.length;
+
+        int nc[] = new int[n + 2];
+        nc[0] = 1;
+        nc[n + 1] = 1;
+
+        for (int i = 1; i <= n; i++) {
+            nc[i] = nums[i - 1];
+        }
+
+        int dp[][] = new int[n + 2][n + 2];
+        
+        for (int i = n; i >= 1; i--) {
+            for (int j = i ; j <= n; j++) { // our j will always greter than i
+                int coins = 0;
+                for (int k = i; k <= j; k++) {
+                    int coin = nc[i-1] * nc[k] * nc[j+1];
+
+                    coin += dp[i][k - 1] + dp[k + 1][j];
+
+                    coins = Math.max(coins, coin);
+                }
+
+                dp[i][j] = coins;
+            }
+        }
+
+        return dp[1][n];
+    }
+}
