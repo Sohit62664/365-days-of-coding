@@ -39,3 +39,33 @@ class Solution {
         return head;
     }
 }
+
+
+//
+
+class Solution {
+    public Node reverse(Node head) {
+
+        Node curr = head;
+
+        while (curr != null) {
+
+            Node last = curr.prev;
+
+            curr.prev = curr.next;
+            curr.next = last;
+
+            curr = curr.prev;
+        }
+
+        if (head != null) {
+            head = head.prev;
+        }
+
+        return head;
+    }
+}
+
+
+
+//
