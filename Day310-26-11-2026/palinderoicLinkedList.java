@@ -43,3 +43,58 @@ class Solution {
         return true;
     }
 }
+
+
+
+// Self logic 
+// Reverse the half of the ll and then match them  if mismatch then return false ; otherwise return true;
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        ListNode fast = head ; 
+        ListNode slow = head ; 
+
+        while(fast!= null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next; 
+        }
+        ListNode pre = null;
+        ListNode curr = slow ; 
+
+        if(fast!= null){
+            curr = slow.next;
+        }
+
+        
+
+        while(curr!= null){
+            ListNode front = curr.next;
+            curr.next = pre ;
+            pre = curr ; 
+            curr = front;
+        }
+
+
+        while(pre!= null){
+            if(pre.val != head.val) return false ;
+
+            pre = pre.next ;
+            head = head.next;
+        }
+
+        return true ;
+
+
+    }
+}
