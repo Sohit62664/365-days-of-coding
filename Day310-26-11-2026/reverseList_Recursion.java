@@ -34,3 +34,33 @@ class Solution {
         temp = temp.next;
     }
 }
+
+
+
+//Without using Static Variable 
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        return f(head);
+    }
+    ListNode f(ListNode head){
+        if(head == null || head.next == null ) return head ;
+
+       
+        ListNode newNode = f(head.next);
+        ListNode front = head.next;
+        front.next = head;
+        head.next = null ;
+        return newNode;
+    }
+}
